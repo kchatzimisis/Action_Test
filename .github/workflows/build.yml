@@ -33,9 +33,9 @@ jobs:
       - run: cat test/test.txt
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event. AND IT WORKED!"
 
-    Round-3:
-      runs-on: ubuntu-latest
-      needs: [Round-2]
-      steps:
-        - run: echo ${{ secrets.MY_SECRET }}
-        - run: echo ${{ variables.MY_VARIABLE }}
+  Round-3:
+    runs-on: ubuntu-latest
+    needs: [Round-2]
+    steps:
+      - run: echo ${{ secrets.MY_SECRET }}
+      - run: echo ${{ variables.MY_VARIABLE }}
