@@ -13,6 +13,7 @@ jobs:
       - run: mkdir test
       - run: cd test && touch test.txt
       - run: echo 'This is a test' > test.txt
+      - run: cat test.txt
       - run: echo text.txt
 
   Explore-Round-2:
