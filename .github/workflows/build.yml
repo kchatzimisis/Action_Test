@@ -8,9 +8,9 @@ jobs:
       - uses: actions/checkout@v3
 
       - run: mkdir test
-      - run: cd test && touch test.txt
-      - run: echo 'This is a test' > test.txt
-      - run: cat test.txt
+      - run: touch test/test.txt
+      - run: echo 'This is a test' > test/test.txt
+      - run: cat test/test.txt
       - run: echo text.txt
 
 
