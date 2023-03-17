@@ -41,11 +41,11 @@ jobs:
   Round-3:
     runs-on: ubuntu-latest
     needs: [Round-2]
-#    environment:
-#      name: TestEnv
-    env:
+    environment:
       name: TestEnv
+    env:
       Day: Monday
     steps:
       - run: echo ${{ secrets.MY_SECRET }}
+      - run: echo ${{ vars.MY_VARIABLE }}
       - run: echo "$Day is the best day of the week!"
