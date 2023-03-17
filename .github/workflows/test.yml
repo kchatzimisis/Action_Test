@@ -31,7 +31,7 @@ jobs:
 
       - uses: actions/download-artifact@v3
         with:
-          name: test
+          name: test-${{ github.sha }}
           path: test
 
       - run: cat test/test.txt
