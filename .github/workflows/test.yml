@@ -1,17 +1,17 @@
 name: Test
 run-name: ${{ github.actor }}
-on:
-  workflow_run:
-    workflows: [Build Test]
-    branches: [main, test-branch]
-    types:
-      - completed
-
 #on:
-#  push:
-#    branches:
-#      - 'main'
-#      - 'test-branch'
+#  workflow_run:
+#    workflows: [Build Test]
+#    branches: [main, test-branch]
+#    types:
+#      - completed
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'test-branch'
 jobs:
   Round-1:
     runs-on: ubuntu-latest
@@ -29,6 +29,12 @@ jobs:
           echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_OUTPUT 
           echo "GITHUB_REF1: $GITHUB_OUTPUT"
           echo "GITHUB_REF: $GITHUB_REF"
+          if ${GITHUB_REF##*/} == "main"
+          then
+            echo "main"
+          else
+            echo "not main"
+          fi
         id: extract_branch
 
 
