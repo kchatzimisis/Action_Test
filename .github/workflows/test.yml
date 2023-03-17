@@ -1,17 +1,17 @@
 name: Test
 run-name: ${{ github.actor }}
-#on:
-#  workflow_run:
-#    workflows:
-#      - 'Build Test'
-#    types:
-#      - completed
-
 on:
-  push:
-    branches:
-      - 'main'
-      - 'test-branch'
+  workflow_run:
+    workflows:
+      - 'Build Test'
+    types:
+      - completed
+
+#on:
+#  push:
+#    branches:
+#      - 'main'
+#      - 'test-branch'
 jobs:
   Round-1:
     runs-on: ubuntu-latest
