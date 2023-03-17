@@ -1,6 +1,10 @@
 name: Build Test
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push]
+on:
+  push:
+    branches:
+      - 'main'
+      - 'test-branch'
 
 jobs:
   test:
@@ -41,4 +45,3 @@ jobs:
       name: TestEnv
     steps:
       - run: echo ${{ secrets.MY_SECRET }}
-      - run: echo ${{ MY_VARIABLE }}
