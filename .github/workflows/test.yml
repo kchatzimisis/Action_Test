@@ -2,8 +2,7 @@ name: Test
 run-name: ${{ github.actor }}
 on:
   workflow_run:
-    workflows:
-      - 'Build Test'
+    workflows: [Build Test]
     types:
       - completed
 
