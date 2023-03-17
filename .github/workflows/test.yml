@@ -23,16 +23,21 @@ jobs:
       - run: echo ${{ secrets.MY_SECRET }}
       - run: echo ${{ vars.MY_VARIABLE }}
       - run: echo "$Day is the best day of the week!"
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_OUTPUT
+        id: extract_branch
 
-  Round-2:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
 
-      - uses: actions/download-artifact@v3
-        with:
-          name: test-${{ github.sha }}
-          path: test
-
-      - run: cat test/test.txt
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event. AND IT WORKED!"
+#  Round-2:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#
+#      - uses: actions/download-artifact@v3
+#        with:
+#          name: test-${{ github.sha }}
+#          path: test
+#
+#      - run: cat test/test.txt
+#      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event. AND IT WORKED!"
