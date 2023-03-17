@@ -1,10 +1,11 @@
 name: TEST Test
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
-  push:
-    branches:
-      - 'main'
-      - 'test-branch'
+  workflow_run:
+    workflows: ["Build Test"]
+    branches: [main, test-branch
+    types:
+      - completed
 
 jobs:
   Round-1:
