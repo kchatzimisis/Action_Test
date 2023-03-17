@@ -25,7 +25,10 @@ jobs:
       - run: echo "$Day is the best day of the week!"
       - name: Extract branch name
         shell: bash
-        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_OUTPUT
+        run: |
+          echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_OUTPUT 
+          echo "GITHUB_REF1: $GITHUB_OUTPUT"
+          echo "GITHUB_REF: $GITHUB_REF"
         id: extract_branch
 
 
