@@ -43,7 +43,7 @@ jobs:
     needs: [Round-2]
     environment:
       name: TestEnv
-      DAY: Monday
+      Day: Monday
     steps:
       - run: echo ${{ secrets.MY_SECRET }}
-      - run: echo "$DAY"
+      - run: echo "$Day is the best day of the week!"
