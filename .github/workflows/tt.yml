@@ -9,7 +9,6 @@ on:
 jobs:
   Round-1:
     runs-on: ubuntu-latest
-    needs: [ Round-2 ]
     environment:
       name: TestEnv
     env:
