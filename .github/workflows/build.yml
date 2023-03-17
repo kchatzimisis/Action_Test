@@ -43,6 +43,7 @@ jobs:
     needs: [Round-2]
     environment:
       name: TestEnv
+    env:
       Day: Monday
     steps:
       - run: echo ${{ secrets.MY_SECRET }}
