@@ -46,4 +46,4 @@ jobs:
       DAY: Monday
     steps:
       - run: echo ${{ secrets.MY_SECRET }}
-      - run: echo ${DAY}
+      - run: echo "$DAY"
