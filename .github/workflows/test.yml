@@ -29,7 +29,7 @@ jobs:
           echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_OUTPUT 
           echo "GITHUB_REF1: $GITHUB_OUTPUT"
           echo "GITHUB_REF: ${GITHUB_REF##*/}"
-          if ${GITHUB_REF##*/} == "main"
+          if ${GITHUB_REF##*/} == main
           then
             echo "main"
           else
