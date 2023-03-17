@@ -3,6 +3,7 @@ run-name: ${{ github.actor }}
 on:
   workflow_run:
     workflows: [Build Test]
+    branches: [main, test-branch]
     types:
       - completed
 
