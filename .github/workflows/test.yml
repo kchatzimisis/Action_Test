@@ -24,13 +24,13 @@ jobs:
       - run: echo ${{ vars.MY_VARIABLE }}
       - run: echo "$Day is the best day of the week!"
       - name: Set environment variables
-        env:
+      - env:
           ENV_VAR: "default_value"
-        if: github.ref == 'refs/heads/main'
+      - if: github.ref == 'refs/heads/main'
       - name: Set environment variables
-        env:
+      - env:
           ENV_VAR: "branch_value"
-        if: startsWith(github.ref, 'refs/heads/feature/')
+      - if: startsWith(github.ref, 'refs/heads/feature/')
 
       - run: echo "$ENV_VAR"
 
