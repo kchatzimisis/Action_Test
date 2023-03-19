@@ -10,7 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     environment:
-      TESTING: linkedlines/k-recruiting/k-recruiting-website/k-recruiting-next
+      TE_VAR: linkedlines/k-recruiting/k-recruiting-website/k-recruiting-next
     steps:
       - uses: actions/checkout@v3
 
@@ -19,7 +19,7 @@ jobs:
       - run: echo 'This is a test' > test/test.txt
       - run: cat test/test.txt
       - run: echo text.txt
-      - run: echo ${{env.TESTING}}
+      - run: echo "env.TE_VAR"
 
       - uses: actions/upload-artifact@v3
         with:
