@@ -10,7 +10,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      TE_VAR: linkedlines/k-recruiting/k-recruiting-website/k-recruiting-next
+      TE_VAR: tetetet
     steps:
       - uses: actions/checkout@v3
 
@@ -19,7 +19,7 @@ jobs:
       - run: echo 'This is a test' > test/test.txt
       - run: cat test/test.txt
       - run: echo text.txt
-      - run: echo "$TE_VAR"
+      - run: echo ${{TE_VAR}}
 
       - uses: actions/upload-artifact@v3
         with:
