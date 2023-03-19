@@ -23,19 +23,16 @@ jobs:
       - run: echo ${{ secrets.MY_SECRET }}
       - run: echo ${{ vars.MY_VARIABLE }}
       - run: echo "$Day is the best day of the week!"
-      - name: Extract branch name
-        shell: bash
-        run: |
-          echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_OUTPUT 
-          echo "GITHUB_REF1: $GITHUB_OUTPUT"
-          echo "GITHUB_REF: ${GITHUB_REF##*/}"
-          if ${GITHUB_REF##*/} == main
-          then
-            echo "main"
-          else
-            echo "not main"
-          fi
-        id: extract_branch
+      - name: Set environment variables
+        env:
+          ENV_VAR: "default_value"
+        if: github.ref == 'refs/heads/main'
+      - name: Set environment variables
+        env:
+          ENV_VAR: "branch_value"
+        if: startsWith(github.ref, 'refs/heads/feature/')
+
+      - run: echo "$ENV_VAR"
 
 
 #  Round-2:
