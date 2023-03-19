@@ -1,17 +1,17 @@
 name: Test
 run-name: ${{ github.actor }}
-#on:
-#  workflow_run:
-#    workflows: [Build Test]
-#    branches: [main, test-branch]
-#    types:
-#      - completed
-
 on:
-  push:
-    branches:
-      - 'main'
-      - 'test-branch'
+  workflow_run:
+    workflows: [Build Test]
+    branches: [main, test-branch]
+    types:
+      - completed
+
+#on:
+#  push:
+#    branches:
+#      - 'main'
+#      - 'test-branch'
 jobs:
   Round-1:
     runs-on: ubuntu-latest
@@ -23,17 +23,15 @@ jobs:
       - run: echo ${{ secrets.MY_SECRET }}
       - run: echo ${{ vars.MY_VARIABLE }}
       - run: echo "$Day is the best day of the week!"
-      - name: Set environment variables
-      - env:
-          ENV_VAR: "default_value"
-      - if: github.ref == 'refs/heads/main'
-      - name: Set environment variables
-      - env:
-          ENV_VAR: "branch_value"
-      - if: startsWith(github.ref, 'refs/heads/feature/')
-
-      - run: echo "$ENV_VAR"
-
+      - name: Extract branch name
+        run: |
+          echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >>$GITHUB_OUTPUT 
+          echo "GITHUB_REF1: $GITHUB_OUTPUT"
+          echo "GITHUB_REF: $GITHUB_REF"
+          if [[ ${{ github.ref }} == 'refs/heads/main' ]];
+          then
+            echo "main"
+          fi
 
 #  Round-2:
 #    runs-on: ubuntu-latest
