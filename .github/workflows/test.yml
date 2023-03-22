@@ -17,8 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: TestEnv
-    env:
-      Day: Monday
     steps:
       - run: echo ${{ secrets.MY_SECRET }}
       - run: echo ${{ vars.MY_VARIABLE }}
@@ -34,7 +32,7 @@ jobs:
           else
             echo "not main"
           fi
-
+          echo "GITHUB_REF: github.branch" 
 
 #  Round-2:
 #    runs-on: ubuntu-latest
